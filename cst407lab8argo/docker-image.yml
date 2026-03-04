@@ -14,10 +14,10 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: |
-        echo "${{ secrets.DOCKERPASSWORD }}" | docker login -u "DockerUserName" --password-stdin
+        echo "${{ secrets.DOCKERPASSWORD }}" | docker login -u "dpresto" --password-stdin
         docker build -t cool_docker .
-        docker tag cool_docker DockerUserName/nice_docker:latest
-        docker push DockerUserName/nice_docker:latest
+        docker tag cool_docker dpresto/nice_docker:latest
+        docker push dpresto/nice_docker:latest
     - name: Create kubeconfig
       run: |
         mkdir ${HOME}/.kube
